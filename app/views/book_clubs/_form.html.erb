@@ -1,17 +1,42 @@
-<%= form_with(model: book_club, local: true) do |form| %>
-  <% if book_club.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(book_club.errors.count, "error") %> prohibited this book_club from being saved:</h2>
+<div class="row">
+  <div class="col-md-6">
+    <%= form_with(model: book_club, local: true) do |form| %>
+      <% if book_club.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(book_club.errors.count, "error") %> prohibited this book_club from being saved:</h2>
 
-      <ul>
-      <% book_club.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+          <ul>
+          <% book_club.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+          </ul>
+        </div>
       <% end %>
-      </ul>
-    </div>
-  <% end %>
 
-  <div class="actions">
-    <%= form.submit %>
+      <div class="form-group">
+        <%= form.label(:title, "Title: ") %>
+        <%= form.text_field :title, :class => "form-control" %>
+
+        <%= form.label(:author, "Author: ") %>
+        <%= form.text_field :author, :class => "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <%= form.label(:description, "Description: ") %>
+        <%= form.text_area(:description, size: "100x5", class: "form-control")  %>
+      </div>
+
+      <div class="form-group">
+        <%= form.label(:startdate, "Start Date: ") %>
+        <%= form.date_field("startdate", class: "form-control" ) %>
+
+        <%= form.label(:enddate, "End Date: ") %>
+        <%= form.date_field("enddate", class: "form-control") %>
+      </div>
+
+      <div class="actions">
+        <%= form.submit(class: "btn btn primary") %>
+      </div>
+    <% end %>
   </div>
-<% end %>
+</div>

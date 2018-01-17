@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Book Clubs</h1>
+<h3>Current Book Clubs</h3>
 
 <table>
   <thead>
@@ -12,8 +12,9 @@
   <tbody>
     <% @book_clubs.each do |book_club| %>
       <tr>
-        <td><%= link_to 'Show', book_club %></td>
-        <td><%= link_to 'Edit', edit_book_club_path(book_club) %></td>
+        <td><%= book_club.title %></td>
+        <td><%= link_to 'Show', book_club %> | </td>
+        <td><%= link_to 'Edit', edit_book_club_path(book_club) %> | </td>
         <td><%= link_to 'Destroy', book_club, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
@@ -22,4 +23,4 @@
 
 <br>
 
-<%= link_to 'New Book Club', new_book_club_path %>
+<%= link_to 'Create New Book Club', new_book_club_path %>

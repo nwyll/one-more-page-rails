@@ -10,6 +10,7 @@ class BookClubsController < ApplicationController
   # GET /book_clubs/1
   # GET /book_clubs/1.json
   def show
+    @book_club = BookClub.find(params[:id])
   end
 
   # GET /book_clubs/new
@@ -19,6 +20,7 @@ class BookClubsController < ApplicationController
 
   # GET /book_clubs/1/edit
   def edit
+    @book_club = BookClub.find(params[:id])
   end
 
   # POST /book_clubs
@@ -69,6 +71,6 @@ class BookClubsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def book_club_params
-      params.fetch(:book_club, {})
+      params.require(:book_club).permit(:title, :author, :description, :startdate, :enddate)
     end
 end
