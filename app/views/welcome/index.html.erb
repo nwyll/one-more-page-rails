@@ -1,2 +1,42 @@
-<h1>One More Page</h1>
-<p>Find me in app/views/welcome/index.html.erb</p>
+<!-- Main jumbotron -->
+<div class="jumbotron">
+<div class="container">
+  <h1>Just one more page ...</h1>
+  <p>One More Page is a book club application dedicated to young adult novels. Here you can connect with fellow YA devotees and discuss your favorite books.</p>
+  <p>New? Create a free account.</p>
+  <p><a class="btn btn-primary btn-lg" href="#" role="button">Sign Up &raquo;</a></p>
+</div>
+</div>
+
+<div class="container">
+  <h2>Check out our current book clubs.</h2>
+  <div class="row">
+    <div class="col-md-4">
+      <%= image_tag("cover_art/these_broken_stars.jpg", size: "150x225", :alt => "These Broken Stars") %>
+      <p><a class="btn btn-default" href="#" role="button">View &raquo;</a></p>
+    </div>
+    <div class="col-md-4">
+      <%= image_tag("cover_art/six_of_crows.jpg", size: "150x225", :alt => "Six of Crows") %>
+      <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+    </div>
+    <div class="col-md-4">
+      <%= image_tag("cover_art/vice&virtue.jpg", size: "150x225", :alt => "The Gentleman's Guide to Vice and Virtue") %>
+      <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <h2>Discover your next favorite book.</h2>
+      <p>Choose from our carefully curated monthly book clubs to join and discuss with fellow YA book lovers.</p>
+      <%= image_tag("welcome/books_in_black&white.jpg", size: "300x300", :alt => "Books in black and white") %>
+    </div>
+    <div class="col-md-6">
+      <h2>Create your own book club.</h2>
+      <p>Premium members can create private book clubs. You select the book and invite your friends to join in on the conversation.</p>
+      <%= image_tag("welcome/lady_midnight_on_shelf.jpg", size: "300x300", :alt => "Lady Midnight") %>
+    </div>
+  </div>
+</div>
