@@ -1,4 +1,4 @@
-# README
+## One More Page is a book club application built with Rails where you can connect with fellow YA devotees and discuss your favorite books.
 
 This README would normally document whatever steps are necessary to get the
 application up and running.
