@@ -3,8 +3,8 @@
 <h2><%= @book_club.title %></h2>
 <p><em>By: <%= @book_club.author %></em></p>
 <p><%= @book_club.description %></p>
-<p>Start date: <%= @book_club.startdate %></p>
-<p>End date: <%= @book_club.enddate %></p>
+<p>Start date: <%= @book_club.startdate.strftime("%B %-d, %Y") %></p>
+<p>End date: <%= @book_club.enddate.strftime("%B %-d, %Y") %></p>
 
 <%= link_to 'Edit', edit_book_club_path(@book_club) %> |
 <%= link_to 'Back', book_clubs_path %>
