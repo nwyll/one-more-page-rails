@@ -71,6 +71,6 @@ class BookClubsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def book_club_params
-      params.require(:book_club).permit(:title, :author, :description, :startdate, :enddate)
+      params.require(:book_club).permit(:title, :author, :description, :startdate, :enddate, :cover)
     end
 end
