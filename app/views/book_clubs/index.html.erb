@@ -1,37 +1,50 @@
 <p id="notice"><%= notice %></p>
 
-<div class="current-clubs container">
-  <h3>Current Book Clubs</h3>
+<div class="container">
+  <div align="right">
+    <%= link_to 'Create New Book Club', new_book_club_path, class: "btn btn-primary" %>
+  </div>
 
-  <table class="table">
-    <thead>
-      <tr>
-        <th colspan="2"></th>
-        <th colspan="1">Start Date</th>
-        <th colspan="1">End Date</th>
-        <th colspan="3"></th>
-      </tr>
-    </thead>
+  <div class="current-clubs">
+    <h3>Current Book Clubs</h3>
 
-    <tbody>
-      <% @book_clubs.each do |book_club| %>
+    <table class="table">
+      <thead>
         <tr>
-          <td><%= image_tag book_club.cover.url(:thumb) %></td>
-          <td><%= link_to book_club.title, book_club %></td>
-          <td><%= book_club.startdate.strftime("%B %-d, %Y") %></td>
-          <td><%= book_club.enddate.strftime("%B %-d, %Y") %></td>
-          <td><%= link_to 'Edit', edit_book_club_path(book_club) %></td>
-          <td><%= link_to 'Delete', book_club, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <th colspan="2"></th>
+          <th colspan="1">Start Date</th>
+          <th colspan="1">End Date</th>
+          <th colspan="3"></th>
         </tr>
-      <% end %>
-    </tbody>
-  </table>
-</div>
+      </thead>
 
-<div class="upcoming-clubs">
-  <h3>Upcoming Book Clubs</h3>
-</div>
+      <tbody>
+        <% @book_clubs.each do |book_club| %>
+          <tr>
+            <td><%= image_tag book_club.cover.url(:thumb) %></td>
+            <td><%= link_to book_club.title, book_club %></td>
+            <td><%= book_club.startdate.strftime("%B %-d, %Y") %></td>
+            <td><%= book_club.enddate.strftime("%B %-d, %Y") %></td>
+            <td><%= link_to 'Edit', edit_book_club_path(book_club) %></td>
+            <td><%= link_to 'Delete', book_club, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
 
+  <hr>
 
-<br>
-<%= link_to 'Create New Book Club', new_book_club_path %>
+  <div class="upcoming-clubs">
+    <h3>Upcoming Book Clubs</h3>
+  </div>
+
+  <hr>
+
+  <div class="past-clubs">
+    <h3>Past Book Clubs</h3>
+  </div>
+
+  <hr>
+
+</div> <!-- end of container -->

@@ -1,13 +1,36 @@
 <p id="notice"><%= notice %></p>
 
 <div class="container">
-  <%= image_tag @book_club.cover.url(:medium) %>
-  <h2><%= @book_club.title %></h2>
-  <p><em>By: <%= @book_club.author %></em></p>
-  <p><%= @book_club.description %></p>
-  <p>Start date: <%= @book_club.startdate.strftime("%B %-d, %Y") %></p>
-  <p>End date: <%= @book_club.enddate.strftime("%B %-d, %Y") %></p>
+  <div class="row book-club-info">
+    <div class="col-md-4" align="center">
+      <%= image_tag @book_club.cover.url(:medium) %>
+    </div>
+    <div class="col-md-8">
+      <h2><%= @book_club.title %></h2>
+      <p><em>By: <%= @book_club.author %></em></p>
+      <p><%= @book_club.description %></p>
+      <p>Start date: <%= @book_club.startdate.strftime("%B %-d, %Y") %></p>
+      <p>End date: <%= @book_club.enddate.strftime("%B %-d, %Y") %></p>
 
-  <%= link_to 'Edit', edit_book_club_path(@book_club) %> |
-  <%= link_to 'Back', book_clubs_path %>
-</div>
+      <%= link_to 'Edit', edit_book_club_path(@book_club) %> |
+      <%= link_to 'Back', book_clubs_path %>
+    </div>
+  </div>
+
+  <hr>
+
+  <div class="row general-topics">
+    <h4>General Discussion</h4>
+
+  </div>
+
+  <hr>
+
+  <div class="row section-topics">
+    <h4>Just finished a chapter and want to talk about it?</h4>
+
+  </div>
+
+  <hr>
+
+</div> <!-- end of container -->
