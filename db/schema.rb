@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180117224215) do
+ActiveRecord::Schema.define(version: 20180118204322) do
 
   create_table "book_clubs", force: :cascade do |t|
     t.string "title"
@@ -24,6 +24,15 @@ ActiveRecord::Schema.define(version: 20180117224215) do
     t.string "cover_content_type"
     t.integer "cover_file_size"
     t.datetime "cover_updated_at"
+  end
+
+  create_table "topics", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "book_club_id"
+    t.integer "type"
+    t.index ["book_club_id"], name: "index_topics_on_book_club_id"
   end
 
 end
