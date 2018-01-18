@@ -18,8 +18,8 @@
 
       <div class="navbar-collapse collapse" id="navbarsExampleDefault" style="">
         <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="#">Book Shelf<span class="sr-only">(current)</span></a>
+          <li class="nav-item">
+            <%= link_to "Book Shelf", book_clubs_path, class: "nav-link" %>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">Profile</a>
@@ -34,5 +34,6 @@
     </nav>
 
     <%= yield %>
+
   </body>
 </html>
