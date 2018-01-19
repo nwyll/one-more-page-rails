@@ -19,9 +19,16 @@
   <!-- Topic Name -->
   <div class="row">
     <h2><%= @topic.name %></h2>
+    <%= link_to 'Edit Topic', edit_book_club_topic_path(@topic.book_club, @topic) %> |
+    <%= link_to 'Delete Topic', [@topic.book_club, @topic], method: :delete, data: { confirm: 'Are you sure?' } %> |
+    <%= link_to 'Back', book_club_path(@book_club) %>
   </div>
 
+  <!-- Show Topic Posts -->
+  <div class="row">
 
-<%= link_to 'Edit Topic', edit_book_club_topic_path(@topic) %> |
-<%= link_to 'Back', book_club_path(@book_club) %>
+  </div>
+
+  <hr>
+
 </div>

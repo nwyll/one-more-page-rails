@@ -1,34 +1,29 @@
 class TopicsController < ApplicationController
   before_action :set_topic, only: [:show, :edit, :update, :destroy]
+  before_action :set_book_club
 
   # GET /topics/1
   # GET /topics/1.json
   def show
-    @book_club = BookClub.find(params[:book_club_id])
-    @topic = Topic.find(params[:id])
   end
 
   # GET /topics/new
   def new
-    @book_club = BookClub.find(params[:book_club_id])
     @topic = Topic.new
   end
 
   # GET /topics/1/edit
   def edit
-    @book_club = BookClub.find(params[:book_club_id])
-    @topic = Topic.find(params[:id])
   end
 
   # POST /topics
   # POST /topics.json
   def create
-    @book_club = BookClub.find(params[:book_club_id])
-    @topic = Topic.new(topic_params)
+    @topic = @book_club.topics.build(topic_params)
 
     respond_to do |format|
       if @topic.save
-        format.html { redirect_to book_club_topic_path, notice: 'Topic was successfully created.' }
+        format.html { redirect_to [@book_club, @topic], notice: 'Topic was successfully created.' }
         format.json { render :show, status: :created, location: @topic }
       else
         format.html { render :new }
@@ -42,7 +37,7 @@ class TopicsController < ApplicationController
   def update
     respond_to do |format|
       if @topic.update(topic_params)
-        format.html { redirect_to @topic, notice: 'Topic was successfully updated.' }
+        format.html { redirect_to [@book_club, @topic], notice: 'Topic was successfully updated.' }
         format.json { render :show, status: :ok, location: @topic }
       else
         format.html { render :edit }
@@ -56,7 +51,7 @@ class TopicsController < ApplicationController
   def destroy
     @topic.destroy
     respond_to do |format|
-      format.html { redirect_to topics_url, notice: 'Topic was successfully destroyed.' }
+      format.html { redirect_to book_club_path(@book_club), notice: 'Topic was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -65,6 +60,10 @@ class TopicsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_topic
       @topic = Topic.find(params[:id])
+    end
+
+    def set_book_club
+      @book_club = BookClub.find(params[:book_club_id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

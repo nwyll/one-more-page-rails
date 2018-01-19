@@ -10,7 +10,6 @@ class BookClubsController < ApplicationController
   # GET /book_clubs/1
   # GET /book_clubs/1.json
   def show
-    @book_club = BookClub.find(params[:id])
     @general_topics = @book_club.topics.where("topic_type = '0'")
     @section_topics = @book_club.topics.where("topic_type = '1'")
   end
@@ -22,7 +21,6 @@ class BookClubsController < ApplicationController
 
   # GET /book_clubs/1/edit
   def edit
-    @book_club = BookClub.find(params[:id])
   end
 
   # POST /book_clubs
