@@ -18,15 +18,19 @@
 
   <!-- Topic Name -->
   <div class="row">
-    <h2><%= @topic.name %></h2>
-    <%= link_to 'Edit Topic', edit_book_club_topic_path(@topic.book_club, @topic) %> |
-    <%= link_to 'Delete Topic', [@topic.book_club, @topic], method: :delete, data: { confirm: 'Are you sure?' } %> |
-    <%= link_to 'Back', book_club_path(@book_club) %>
+    <div class="col">
+      <h2><%= @topic.name %></h2>
+      <%= link_to 'Edit Topic', edit_book_club_topic_path(@topic.book_club, @topic) %> |
+      <%= link_to 'Delete Topic', [@topic.book_club, @topic], method: :delete, data: { confirm: 'Are you sure?' } %> |
+      <%= link_to 'Back to Book Club', book_club_path(@book_club) %>
+    </div>
   </div>
 
   <!-- Show Topic Posts -->
   <div class="row">
-
+    <div class="col">
+      posts for this topic to go here
+    </div>
   </div>
 
   <hr>
