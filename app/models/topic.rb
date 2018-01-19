@@ -1,7 +1,7 @@
 class Topic < ApplicationRecord
   belongs_to :book_club
 
-  before_save { self.type ||= :general }
+  before_save { self.topic_type ||= :general }
 
   validates :name, length: { minimum: 1, maximum: 100 }, presence: true
 
