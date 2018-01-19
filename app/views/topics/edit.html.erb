@@ -1,6 +1,8 @@
-<h1>Editing Topic</h1>
+<div class="container-fluid">
+  <h1>Editing Topic</h1>
 
-<%= render 'form', topic: @topic %>
+  <%= render 'form', topic: @topic %>
 
-<%= link_to 'Show', @topic %> |
-<%= link_to 'Back', topics_path %>
+  <%= link_to 'Show', book_club_topic_path %> |
+  <%= link_to 'Back', book_club_path(@book_club) %>
+</div>

@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
-  resources :topics
-  resources :book_clubs
-  
+  resources :book_clubs do
+    resources :topics, except: [:index]
+  end
+
   root 'welcome#index'
 end

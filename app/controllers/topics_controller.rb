@@ -1,35 +1,34 @@
 class TopicsController < ApplicationController
   before_action :set_topic, only: [:show, :edit, :update, :destroy]
 
-  # GET /topics
-  # GET /topics.json
-  def index
-    @topics = Topic.all
-  end
-
   # GET /topics/1
   # GET /topics/1.json
   def show
+    @book_club = BookClub.find(params[:book_club_id])
     @topic = Topic.find(params[:id])
   end
 
   # GET /topics/new
   def new
+    @book_club = BookClub.find(params[:book_club_id])
     @topic = Topic.new
   end
 
   # GET /topics/1/edit
   def edit
+    @book_club = BookClub.find(params[:book_club_id])
+    @topic = Topic.find(params[:id])
   end
 
   # POST /topics
   # POST /topics.json
   def create
+    @book_club = BookClub.find(params[:book_club_id])
     @topic = Topic.new(topic_params)
 
     respond_to do |format|
       if @topic.save
-        format.html { redirect_to @topic, notice: 'Topic was successfully created.' }
+        format.html { redirect_to book_club_topic_path, notice: 'Topic was successfully created.' }
         format.json { render :show, status: :created, location: @topic }
       else
         format.html { render :new }
@@ -70,6 +69,6 @@ class TopicsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def topic_params
-      params.fetch(:topic, {})
+      params.require(:topic).permit(:name, :topic_type)
     end
 end

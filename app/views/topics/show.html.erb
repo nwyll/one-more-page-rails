@@ -1,4 +1,10 @@
 <p id="notice"><%= notice %></p>
 
-<%= link_to 'Edit', edit_topic_path(@topic) %> |
-<%= link_to 'Back', topics_path %>
+<div class="container">
+  <div class="row">
+    <h2><%= @topic.name %></h2>
+  </div>
+</div>
+
+<%= link_to 'Edit Topic', edit_book_club_topic_path(@topic) %> |
+<%= link_to 'Back', book_club_path(@book_club) %>

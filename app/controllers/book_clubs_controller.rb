@@ -11,6 +11,8 @@ class BookClubsController < ApplicationController
   # GET /book_clubs/1.json
   def show
     @book_club = BookClub.find(params[:id])
+    @general_topics = @book_club.topics.where("topic_type = '0'")
+    @section_topics = @book_club.topics.where("topic_type = '1'")
   end
 
   # GET /book_clubs/new
@@ -71,6 +73,6 @@ class BookClubsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def book_club_params
-      params.require(:book_club).permit(:title, :author, :description, :startdate, :enddate, :cover)
+      params.require(:book_club).permit(:title, :author, :description, :start_date, :end_date, :cover)
     end
 end
