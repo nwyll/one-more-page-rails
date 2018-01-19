@@ -5,5 +5,5 @@ class Topic < ApplicationRecord
 
   validates :name, length: { minimum: 1, maximum: 100 }, presence: true
 
-  enum type: [:general, :section]
+  enum topic_type: [ :general, :section ]
 end

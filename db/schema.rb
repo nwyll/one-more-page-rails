@@ -10,20 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180118204322) do
+ActiveRecord::Schema.define(version: 20180119031023) do
 
   create_table "book_clubs", force: :cascade do |t|
     t.string "title"
     t.string "author"
     t.text "description"
-    t.date "startdate"
-    t.date "enddate"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "cover_file_name"
     t.string "cover_content_type"
     t.integer "cover_file_size"
     t.datetime "cover_updated_at"
+    t.date "start_date"
+    t.date "end_date"
   end
 
   create_table "topics", force: :cascade do |t|
@@ -31,7 +31,7 @@ ActiveRecord::Schema.define(version: 20180118204322) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "book_club_id"
-    t.integer "type"
+    t.integer "topic_type"
     t.index ["book_club_id"], name: "index_topics_on_book_club_id"
   end
 

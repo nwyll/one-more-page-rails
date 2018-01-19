@@ -23,8 +23,8 @@
           <tr>
             <td><%= image_tag book_club.cover.url(:thumb) %></td>
             <td><%= link_to book_club.title, book_club %></td>
-            <td><%= book_club.startdate.strftime("%B %-d, %Y") %></td>
-            <td><%= book_club.enddate.strftime("%B %-d, %Y") %></td>
+            <td><%= book_club.start_date.strftime("%B %-d, %Y") %></td>
+            <td><%= book_club.end_date.strftime("%B %-d, %Y") %></td>
             <td><%= link_to 'Edit', edit_book_club_path(book_club) %></td>
             <td><%= link_to 'Delete', book_club, method: :delete, data: { confirm: 'Are you sure?' } %></td>
           </tr>

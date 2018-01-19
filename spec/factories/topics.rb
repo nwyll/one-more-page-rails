@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :topic do
     name Faker::Lorem.sentence
-    type "general"
+    topic_type "general"
     book_club
   end
 end
