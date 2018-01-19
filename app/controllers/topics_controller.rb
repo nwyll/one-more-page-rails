@@ -1,7 +1,7 @@
 class TopicsController < ApplicationController
-  before_action :set_topic, only: [:show, :edit, :update, :destroy]
   before_action :set_book_club
-
+  before_action :set_topic, only: [:show, :edit, :update, :destroy]
+  
   # GET /topics/1
   # GET /topics/1.json
   def show
@@ -9,7 +9,7 @@ class TopicsController < ApplicationController
 
   # GET /topics/new
   def new
-    @topic = Topic.new
+    @topic = @book_club.topics.build
   end
 
   # GET /topics/1/edit
@@ -58,12 +58,12 @@ class TopicsController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_topic
-      @topic = Topic.find(params[:id])
-    end
-
     def set_book_club
       @book_club = BookClub.find(params[:book_club_id])
+    end
+
+    def set_topic
+      @topic = @book_club.topics.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
