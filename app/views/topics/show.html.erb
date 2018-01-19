@@ -1,10 +1,27 @@
 <p id="notice"><%= notice %></p>
 
 <div class="container">
+  <!-- Book Club Info small -->
+  <div class="row">
+    <div class="col-md-3">
+      <%= image_tag @book_club.cover.url(:medium) %>
+    </div>
+    <div class="col-md-9">
+      <h2><%= @book_club.title %></h2>
+      <p><em>By: <%= @book_club.author %></em></p>
+      <p>Discussion Closes: <%= @book_club.end_date.strftime("%B %-d, %Y") %></p>
+      <br>
+    </div>
+  </div>
+
+  <hr>
+
+  <!-- Topic Name -->
   <div class="row">
     <h2><%= @topic.name %></h2>
   </div>
-</div>
+
 
 <%= link_to 'Edit Topic', edit_book_club_topic_path(@topic) %> |
 <%= link_to 'Back', book_club_path(@book_club) %>
+</div>
