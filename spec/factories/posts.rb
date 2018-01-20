@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :post do
-    body "MyText"
-    topic nil
+    body Faker::Lorem.paragraph
+    topic
   end
 end
