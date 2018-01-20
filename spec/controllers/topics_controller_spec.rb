@@ -101,9 +101,9 @@ RSpec.describe TopicsController, type: :controller do
 
   describe "DELETE #destroy" do
     it "deletes the requested topic" do
-      expect {
-        delete :destroy, params: { book_club_id: my_book_club.id, id: my_topic.id }
-      }.to change(Topic, :count).by(-1)
+      delete :destroy, params: { book_club_id: my_book_club.id, id: my_topic.id }
+      count = Topic.where({id: my_topic.id}).size
+      expect(count).to eq 0
     end
 
     it "redirects to the book_club page" do
