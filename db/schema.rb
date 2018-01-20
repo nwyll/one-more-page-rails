@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180119031023) do
+ActiveRecord::Schema.define(version: 20180119235311) do
 
   create_table "book_clubs", force: :cascade do |t|
     t.string "title"
@@ -24,6 +24,14 @@ ActiveRecord::Schema.define(version: 20180119031023) do
     t.datetime "cover_updated_at"
     t.date "start_date"
     t.date "end_date"
+  end
+
+  create_table "posts", force: :cascade do |t|
+    t.text "body"
+    t.integer "topic_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["topic_id"], name: "index_posts_on_topic_id"
   end
 
   create_table "topics", force: :cascade do |t|
