@@ -51,7 +51,7 @@ class PostsController < ApplicationController
   def destroy
     @post.destroy
     respond_to do |format|
-      format.html { redirect_to @topic, notice: 'Post was successfully destroyed.' }
+      format.html { redirect_to book_club_topic_path(@topic.book_club, @topic), notice: 'Post was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

@@ -22,10 +22,10 @@ RSpec.describe PostsController, type: :controller do
     end
   end
 
-  describe "GET new" do
-    it "returns http success" do
+  describe "GET #new" do
+    it "returns a success response" do
       get :new, params: { topic_id: my_topic.id }
-      expect(response).to have_http_status(:success)
+      expect(response).to be_success
     end
 
     it "renders the #new view" do
@@ -39,10 +39,10 @@ RSpec.describe PostsController, type: :controller do
     end
   end
 
-  describe "GET edit" do
-    it "returns http success" do
+  describe "GET #edit" do
+    it "returns a success response" do
       get :edit, params: { topic_id: my_topic.id, id: my_post.id }
-      expect(response).to have_http_status(:success)
+      expect(response).to be_success
     end
 
     it "renders the #edit view" do
@@ -59,25 +59,26 @@ RSpec.describe PostsController, type: :controller do
     end
   end
 
-  describe "POST create" do
+  describe "POST #create" do
     it "increases the number of Post by 1" do
-      expect{ post :create, params: { topic_id: my_topic.id, post: { body: Faker::Lorem.paragraph } }
-      }.to change(Post,:count).by(1)
+      expect{
+        post :create, params: { topic_id: my_topic.id, post: { body: Faker::Lorem.paragraph } }
+      }.to change(Post, :count).by(1)
     end
 
-    it "assigns the new post to @post" do
+    it "assigns the new post to Post.last" do
       post :create, params: { topic_id: my_topic.id, post: { body: Faker::Lorem.paragraph } }
       expect(assigns(:post)).to eq Post.last
     end
 
-    it "redirects to the new post" do
+    it "redirects to the created post" do
       post :create, params: { topic_id: my_topic.id, post: { body: Faker::Lorem.paragraph } }
       expect(response).to redirect_to [my_topic, Post.last]
     end
   end
 
   describe "PUT update" do
-    it "updates post with expected attributes" do
+    it "updates the requested post with expected attributes" do
       new_body = Faker::Lorem.paragraph
 
       put :update, params: { topic_id: my_topic.id, id: my_post.id, post: { body: new_body } }
@@ -96,14 +97,15 @@ RSpec.describe PostsController, type: :controller do
   end
 
    describe "DELETE destroy" do
-    it "deletes the post" do
-      expect{ post :destroy, params: { topic_id: my_topic.id, id: my_post.id }
-      }.to change(Post,:count).by(-1)
+    it "deletes the requested post" do
+      expect {
+        delete :destroy, params: { topic_id: my_topic.id, id: my_post.id }
+      }.to change(Post, :count).by(-1)
     end
 
     it "redirects to topic page" do
       delete :destroy, params: { topic_id: my_topic.id, id: my_post.id }
-      expect(response).to redirect_to my_topic
+      expect(response).to redirect_to [my_book_club, my_topic]
     end
   end
 
