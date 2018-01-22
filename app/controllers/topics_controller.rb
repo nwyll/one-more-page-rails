@@ -1,7 +1,7 @@
 class TopicsController < ApplicationController
   before_action :set_book_club
   before_action :set_topic, only: [:show, :edit, :update, :destroy]
-  
+
   # GET /topics/1
   # GET /topics/1.json
   def show

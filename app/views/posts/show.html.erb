@@ -1,14 +1,38 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Body:</strong>
-  <%= @post.body %>
-</p>
+<div class="container">
+  <!-- Book Club Info small -->
+  <div class="row">
+    <div class="col-sm-4">
+      <%= image_tag @topic.book_club.cover.url(:medium), :height => "225px" %>
+    </div>
+    <div class="col-sm-8">
+      <h2><%= @topic.book_club.title %></h2>
+      <p><em>By: <%= @topic.book_club.author %></em></p>
+      <p>Discussion Closes: <%= @topic.book_club.end_date.strftime("%B %-d, %Y") %></p>
+      <br>
+    </div>
+  </div>
 
-<p>
-  <strong>Topic:</strong>
-  <%= @post.topic %>
-</p>
+  <hr>
 
-<%= link_to 'Edit', edit_post_path(@post) %> |
-<%= link_to 'Back', posts_path %>
+  <div class="row">
+    <div class="col"
+      <p>
+        <strong><%= @post.topic.name %></strong>
+      </p>
+
+      <p>
+        <%= @post.body %>
+      </p>
+
+      <%= link_to 'Edit Post', edit_topic_post_path(@post.topic, @post) %> |
+      <%= link_to 'Delete Post', [@post.topic, @post], method: :delete, data: { confirm: 'Are you sure?' } %> |
+      <%= link_to 'Back', book_club_topic_path(@topic.book_club, @topic) %>
+
+      <p>list comments for this post here</p>
+
+      <%= link_to 'Comment', post_comments_path(@post) %>
+    </div>
+  </div>
+</div>

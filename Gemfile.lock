@@ -99,7 +99,7 @@ GEM
     nio4r (2.2.0)
     nokogiri (1.8.1)
       mini_portile2 (~> 2.3.0)
-    paperclip (5.0.0)
+    paperclip (5.1.0)
       activemodel (>= 4.2.0)
       activesupport (>= 4.2.0)
       cocaine (~> 0.5.5)
@@ -219,7 +219,7 @@ DEPENDENCIES
   faker (~> 1.8, >= 1.8.7)
   jbuilder (~> 2.5)
   listen (>= 3.0.5, < 3.2)
-  paperclip (~> 5.0.0)
+  paperclip (~> 5.1)
   puma (~> 3.7)
   rails (~> 5.1.4)
   rails-controller-testing
