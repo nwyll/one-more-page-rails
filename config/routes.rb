@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   end
 
   resources :posts, only: [] do
-    resources :comments, only: [:update, :create, :destroy]
+    resources :comments, only: [:create, :update, :destroy]
   end
 
   root 'welcome#index'
