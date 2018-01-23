@@ -17,23 +17,27 @@
   <hr>
 
   <div class="row">
-    <div class="col"
-      <p>
+    <div class="col-sm-9">
+      <h5>
         <strong><%= @post.topic.name %></strong>
-      </p>
+      </h5>
 
       <p>
         <%= @post.body %>
       </p>
+    </div>
 
+    <div class="col-sm-3">
       <%= link_to 'Edit Post', edit_topic_post_path(@post.topic, @post) %> |
       <%= link_to 'Delete Post', [@post.topic, @post], method: :delete, data: { confirm: 'Are you sure?' } %> |
       <%= link_to 'Back', book_club_topic_path(@topic.book_club, @topic) %>
+    </div>
 
-      <p>Comments:</p>
+    <div class="col">
+      <h6>Comments:</h6>
       <%= render @post.comments %>
-
-      <%= link_to 'Add Comment', post_comments_path(@post) %>
+      <h6>Add a new comment:</h6>
+      <%= render 'comments/form', comment: Comment.new, post: @post %>
     </div>
   </div>
 </div>

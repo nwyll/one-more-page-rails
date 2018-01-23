@@ -1,3 +1,7 @@
 <div>
   <p><%= comment.body %></p>
+  <small>
+    <%= link_to 'Edit', edit_post_comment_path(@post, comment) %> |
+    <%= link_to 'Delete', [@post, comment], method: :delete, data: { confirm: 'Are you sure?' }, class: 'pull-right' %>
+  </small>
 </div>
