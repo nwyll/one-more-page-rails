@@ -2,22 +2,22 @@ class PostsController < ApplicationController
   before_action :set_topic
   before_action :set_post, only: [:show, :edit, :update, :destroy]
 
-  # GET /posts/1
-  # GET /posts/1.json
+  # GET topics/1/posts/1
+  # GET topics/1/posts/1.json
   def show
   end
 
-  # GET /posts/new
+  # GET topics/1/posts/new
   def new
     @post = @topic.posts.build
   end
 
-  # GET /posts/1/edit
+  # GET topics/1/posts/1/edit
   def edit
   end
 
-  # POST /posts
-  # POST /posts.json
+  # POST topics/1/posts
+  # POST topics/1/posts.json
   def create
     @post = @topic.posts.build(post_params)
 
@@ -32,8 +32,8 @@ class PostsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /posts/1
-  # PATCH/PUT /posts/1.json
+  # PATCH/PUT topics/1/posts/1
+  # PATCH/PUT topics/1/posts/1.json
   def update
     respond_to do |format|
       if @post.update(post_params)
@@ -46,12 +46,12 @@ class PostsController < ApplicationController
     end
   end
 
-  # DELETE /posts/1
-  # DELETE /posts/1.json
+  # DELETE topics/1/posts/1
+  # DELETE topics/1/posts/1.json
   def destroy
     @post.destroy
     respond_to do |format|
-      format.html { redirect_to book_club_topic_path(@topic.book_club, @topic), notice: 'Post was successfully destroyed.' }
+      format.html { redirect_to book_club_topic_path(@topic.book_club, @topic), notice: 'Post was successfully deleted.' }
       format.json { head :no_content }
     end
   end

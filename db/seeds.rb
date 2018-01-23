@@ -52,7 +52,17 @@ topics = Topic.all
 50.times do
   Post.create!(
     topic:  topics.sample,
-    body:   Faker::Lorem.paragraph,
+    body:   Faker::Lorem.paragraph
+  )
+end
+
+posts = Post.all
+
+#Comments
+50.times do
+  Comment.create!(
+    post:   posts.sample,
+    body:   Faker::Lorem.paragraph
   )
 end
 
@@ -60,3 +70,4 @@ puts "Seed finished"
 puts "#{BookClub.count} book clubs created."
 puts "#{Topic.count} topics created."
 puts "#{Post.count} posts created."
+puts "#{Comment.count} comments created."
