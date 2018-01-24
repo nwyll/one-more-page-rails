@@ -3,5 +3,5 @@
 
   <%= render 'form', post: @post %>
 
-  <%= link_to 'Back', book_club_topic_path(@topic.book_club, @topic) %>
+  <%= link_to 'Back', book_club_topic_path(@post.topic.book_club, @post.topic) %>
 </div>

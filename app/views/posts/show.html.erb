@@ -4,12 +4,12 @@
   <!-- Book Club Info small -->
   <div class="row">
     <div class="col-sm-4">
-      <%= image_tag @topic.book_club.cover.url(:medium), :height => "225px" %>
+      <%= image_tag @presenter.book_club_cover_url, :height => "225px" %>
     </div>
     <div class="col-sm-8">
-      <h2><%= @topic.book_club.title %></h2>
-      <p><em>By: <%= @topic.book_club.author %></em></p>
-      <p>Discussion Closes: <%= @topic.book_club.end_date.strftime("%B %-d, %Y") %></p>
+      <h2><%= @presenter.book_club_title %></h2>
+      <p><em>By: <%= @presenter.book_club_author %></em></p>
+      <p>Discussion Closes: <%= @presenter.book_club_end_date %></p>
       <br>
     </div>
   </div>
@@ -19,25 +19,25 @@
   <div class="row">
     <div class="col-sm-9">
       <h5>
-        <strong><%= @post.topic.name %></strong>
+        <strong><%= @presenter.topic.name %></strong>
       </h5>
 
       <p>
-        <%= @post.body %>
+        <%= @presenter.post.body %>
       </p>
     </div>
 
     <div class="col-sm-3">
-      <%= link_to 'Edit Post', edit_topic_post_path(@post.topic, @post) %> |
-      <%= link_to 'Delete Post', [@post.topic, @post], method: :delete, data: { confirm: 'Are you sure?' } %> |
-      <%= link_to 'Back', book_club_topic_path(@topic.book_club, @topic) %>
+      <%= link_to 'Edit Post', edit_topic_post_path(@presenter.topic, @presenter.post) %> |
+      <%= link_to 'Delete Post', [@presenter.topic, @presenter.post], method: :delete, data: { confirm: 'Are you sure?' } %> |
+      <%= link_to 'Back', book_club_topic_path(@presenter.book_club, @presenter.topic) %>
     </div>
 
     <div class="col">
       <h6>Comments:</h6>
-      <%= render @post.comments %>
+      <%= render @presenter.post.comments %>
       <h6>Add a new comment:</h6>
-      <%= render 'comments/form', comment: Comment.new, post: @post %>
+      <%= render 'comments/form', comment: Comment.new, post: @presenter.post %>
     </div>
   </div>
 </div>
