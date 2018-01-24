@@ -22,7 +22,7 @@ RSpec.describe CommentsController, type: :controller do
       comment_instance = assigns(:comment)
 
       expect(comment_instance.id).to eq my_comment.id
-      expect(commetn_instance.body).to eq my_comment.body
+      expect(comment_instance.body).to eq my_comment.body
     end
   end
 
