@@ -4,7 +4,10 @@ class BookClubsController < ApplicationController
   # GET /book_clubs
   # GET /book_clubs.json
   def index
-    @book_clubs = BookClub.all
+    # @book_clubs = BookClub.all
+    @current = BookClub.where(':date BETWEEN start_date AND end_date', date: Date.today)
+    @upcoming = BookClub.where(':date < start_date', date: Date.today)
+    @past = BookClub.where(':date > end_date', date: Date.today)
   end
 
   # GET /book_clubs/1
