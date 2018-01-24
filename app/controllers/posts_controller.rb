@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-    # GET topics/1/posts/1
+  # GET topics/1/posts/1
   # GET topics/1/posts/1.json
   def show
     topic = Topic.find(params[:topic_id])
