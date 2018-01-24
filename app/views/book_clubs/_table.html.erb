@@ -11,11 +11,11 @@
   <tbody>
     <% book_clubs.each do |book_club| %>
       <tr>
-        <td><%= image_tag book_club.cover.url(:thumb) %></td>
-        <td><%= link_to book_club.title, book_club %></td>
-        <td><%= book_club.start_date.strftime("%B %-d, %Y") %></td>
-        <td><%= book_club.end_date.strftime("%B %-d, %Y") %></td>
-        <td>
+        <td class="bookclub-item-thumb"><%= image_tag book_club.cover.url(:thumb) %></td>
+        <td class="bookclub-item-title"><%= link_to book_club.title, book_club %></td>
+        <td class="bookclub-item-date"><%= book_club.start_date.strftime("%B %-d, %Y") %></td>
+        <td class="bookclub-item-date"><%= book_club.end_date.strftime("%B %-d, %Y") %></td>
+        <td class="bookclub-item-actions">
           <%= link_to 'Edit', edit_book_club_path(book_club) %> |
           <%= link_to 'Delete', book_club, method: :delete, data: { confirm: 'Are you sure?' } %>
         </td>
