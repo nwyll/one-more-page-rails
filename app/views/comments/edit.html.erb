@@ -1,5 +1,7 @@
-<h1>Editing Post</h1>
+<div class="container-fluid">
+  <h1>Editing Post</h1>
 
-<%= render 'form', comment: @comment %>
+  <%= render 'form', comment: @comment %>
 
-<%= link_to 'Back', topic_post_path(@post.topic, @post) %>
+  <%= link_to 'Back', topic_post_path(@post.topic, @post) %>
+</div>

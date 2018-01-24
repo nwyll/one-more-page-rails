@@ -13,8 +13,7 @@
       <p>Start date: <%= @book_club.start_date.strftime("%B %-d, %Y") %></p>
       <p>End date: <%= @book_club.end_date.strftime("%B %-d, %Y") %></p>
 
-      <%= link_to 'Add New Topic',  new_book_club_topic_path(@book_club), class: "btn btn-primary" %>
-      <br><br>
+      <br>
       <%= link_to 'Edit Book Club', edit_book_club_path(@book_club) %> |
       <%= link_to 'Back to Book Shelf', book_clubs_path %>
     </div>
@@ -23,9 +22,14 @@
   <hr>
   <!-- General Discussion -->
   <div class="row">
-    <div class="col">
+    <div class="col-sm-10">
       <h4>General Discussion</h4>
       <p>Warning: Spoilers may be present here!</p>
+    </div>
+    <div class="col-sm-2">
+        <%= link_to 'Add New Topic',  new_book_club_topic_path(@book_club), class: "btn btn-primary" %>
+    </div>
+    <div class="col">
       <% @general_topics.each do |topic| %>
         <h5>
           <%= link_to topic.name,  book_club_topic_path(@book_club, topic) %>
