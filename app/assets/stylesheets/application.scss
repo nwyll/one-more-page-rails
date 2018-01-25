@@ -20,3 +20,11 @@
    padding-top: 60px;
    padding-bottom: 60px;
  }
+
+ .alert-alert {
+  @extend .alert-warning;
+}
+
+.alert-notice {
+  @extend .alert-info;
+}

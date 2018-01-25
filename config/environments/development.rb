@@ -26,11 +26,20 @@ Rails.application.configure do
     config.cache_store = :null_store
   end
 
-  # Default URL options for the Devise mailer
-  config.action_mailer.default_url_options = { host: 'localhost', port: 3001 }
-
-  # Don't care if the mailer can't send.
+  # Action Mailer Configuration
+  config.action_mailer.delivery_method = :sendmail
+  # Defaults to:
+  # config.action_mailer.sendmail_settings = {
+  #   location: '/usr/sbin/sendmail',
+  #   arguments: '-i'
+  # }
+  config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.default_options = {from: 'no-reply@example.com'}
+  
+  # Default URL options for the Devise mailer
+  config.action_mailer.default_url_options = { host: '127.0.0.1', port: 3001 }
+
 
   config.action_mailer.perform_caching = false
 
