@@ -1,11 +1,13 @@
 <!-- Main jumbotron -->
 <div class="jumbotron">
-<div class="container">
-  <h1>Just one more page ...</h1>
-  <p>One More Page is a book club application dedicated to young adult novels. Here you can connect with fellow YA devotees and discuss your favorite books.</p>
-  <p>New? Create a free account.</p>
-  <p><a class="btn btn-primary btn-lg" href="#" role="button">Sign Up &raquo;</a></p>
-</div>
+  <div class="container">
+    <h1>Just one more page ...</h1>
+    <p>One More Page is a book club application dedicated to young adult novels. Here you can connect with fellow YA devotees and discuss your favorite books.</p>
+    <p>New? Create a free account.</p>
+    <p>
+      <%= link_to "Sign Up", new_user_registration_path, class: 'btn btn-primary btn-lg' %>
+    </p>
+  </div>
 </div>
 
 <div class="container">
