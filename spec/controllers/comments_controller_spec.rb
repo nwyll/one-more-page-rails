@@ -1,10 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe CommentsController, type: :controller do
+  let(:my_user) { create(:user) }
   let(:my_book_club) { create(:book_club) }
   let(:my_topic) { create(:topic, book_club: my_book_club) }
-  let(:my_post) { create(:post, topic: my_topic) }
-  let (:my_comment) { create(:comment, post: my_post) }
+  let(:my_post) { create(:post, topic: my_topic, user: my_user) }
+  let(:my_comment) { create(:comment, post: my_post, user: my_user) }
 
   describe "GET #edit" do
     it "returns a success response" do
@@ -29,17 +30,17 @@ RSpec.describe CommentsController, type: :controller do
   describe "POST #create" do
     it "increases the number of comments by 1" do
       expect{
-        post :create, params: { post_id: my_post.id, comment: { body: Faker::Lorem.paragraph } }
+        post :create, params: { post_id: my_post.id, user_id: my_user.id, comment: { body: Faker::Lorem.paragraph } }
       }.to change(Comment, :count).by(1)
     end
 
     it "assigns the new comment to Comment.last" do
-      post :create, params: { post_id: my_post.id, comment: { body: Faker::Lorem.paragraph } }
+      post :create, params: { post_id: my_post.id, user_id: my_user.id, comment: { body: Faker::Lorem.paragraph } }
       expect(assigns(:comment)).to eq Comment.last
     end
 
     it "redirects to the post show view" do
-      post :create, params: { post_id: my_post.id, comment: { body: Faker::Lorem.paragraph } }
+      post :create, params: { post_id: my_post.id, user_id: my_user.id, comment: { body: Faker::Lorem.paragraph } }
       expect(response).to redirect_to [my_topic, my_post]
     end
   end
