@@ -1,4 +1,6 @@
 class PostsController < ApplicationController
+  before_action :authenticate_user!
+  
   # GET topics/1/posts/1
   # GET topics/1/posts/1.json
   def show

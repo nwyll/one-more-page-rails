@@ -1,4 +1,5 @@
 class BookClubsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_book_club, only: [:show, :edit, :update, :destroy]
 
   # GET /book_clubs
