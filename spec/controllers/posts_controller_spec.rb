@@ -94,8 +94,7 @@ RSpec.describe PostsController, type: :controller do
 
       put :update, params: { topic_id: my_topic.id, id: my_post.id, post: { body: new_body }, user_id: my_user.id }
       expect(response).to redirect_to [my_topic, my_post]
-    end
-  end
+wq  end
 
    describe "DELETE destroy" do
     it "deletes the requested post" do
