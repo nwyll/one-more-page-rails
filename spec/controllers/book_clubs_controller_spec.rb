@@ -33,7 +33,7 @@ RSpec.describe BookClubsController, type: :controller do
         get :index
         expect(assigns(:current)).to eq([my_book_club])
       end
-   end
+    end
 
     describe "GET #show" do
       it "returns a success response" do

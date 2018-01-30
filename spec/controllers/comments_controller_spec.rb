@@ -5,7 +5,7 @@ RSpec.describe CommentsController, type: :controller do
   let(:other_member) { create(:user, name: "Other Member", email: "other_member@bloc.io") }
   let(:admin) { create(:user, name: "Admin", email: "admin@bloc.io", role: :admin) }
   let(:my_book_club) { create(:book_club) }
-  let(:my_topic) { create(:topic, book_club: my_book_club) }
+  let(:my_topic) { create(:topic, book_club: my_book_club, user: member) }
   let(:my_post) { create(:post, topic: my_topic, user: member) }
   let(:my_comment) { create(:comment, post: my_post, user: member) }
 

@@ -3,5 +3,6 @@ FactoryBot.define do
     name Faker::Lorem.sentence
     topic_type "general"
     book_club
+    user
   end
 end

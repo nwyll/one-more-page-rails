@@ -1,5 +1,6 @@
 class Topic < ApplicationRecord
   belongs_to :book_club
+  belongs_to :user
   has_many :posts, dependent: :destroy
 
   before_save { self.topic_type ||= :general }

@@ -29,19 +29,11 @@
         <%= link_to 'Add New Topic',  new_book_club_topic_path(@book_club), class: "btn btn-primary" %>
     </div>
     <div class="col">
-      <table class="table">
-        <tbody>
-          <% @general_topics.each do |topic| %>
-            <tr class="bookclub-view-topic-item">
-              <td class="topic-item-name"><%= link_to topic.name,  book_club_topic_path(@book_club, topic) %></td>
-              <td class="topic-item-actions">
-                <%= link_to 'Edit Topic', edit_book_club_topic_path(@book_club, topic) %> |
-                <%= link_to 'Delete Topic', [@book_club, topic], method: :delete, data: { confirm: 'Are you sure?' } %>
-              </td>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
+      <% @general_topics.each do |topic| %>
+        <h5>
+          <%= link_to topic.name,  book_club_topic_path(@book_club, topic) %>
+        </h5>
+      <% end %>
     </div>
   </div>
 
