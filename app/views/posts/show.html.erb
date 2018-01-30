@@ -15,7 +15,7 @@
   </div>
 
   <hr>
-
+  <!-- Post -->
   <div class="row">
     <div class="col-sm-9">
       <h5>
@@ -26,16 +26,25 @@
         <%= @presenter.post.body %>
       </p>
     </div>
-
     <div class="col-sm-3">
-      <%= link_to 'Edit Post', edit_topic_post_path(@presenter.topic, @presenter.post) %> |
-      <%= link_to 'Delete Post', [@presenter.topic, @presenter.post], method: :delete, data: { confirm: 'Are you sure?' } %> |
+      <% if policy(@presenter.post).update? %>
+        <%= link_to 'Edit Post', edit_topic_post_path(@presenter.topic, @presenter.post) %> |
+        <%= link_to 'Delete Post', [@presenter.topic, @presenter.post], method: :delete, data: { confirm: 'Are you sure?' } %> |
+      <% end %>
       <%= link_to 'Back', book_club_topic_path(@presenter.book_club, @presenter.topic) %>
     </div>
+  </div>
 
+  <!-- Comments -->
+  <h6>Comments:</h6>
+  <div class="row">
+    <%= render @presenter.post.comments %>
+  </div>
+
+  <!-- Add Comment -->
+  <div class="row">
     <div class="col">
-      <h6>Comments:</h6>
-      <%= render @presenter.post.comments %>
+      <br>
       <h6>Add a new comment:</h6>
       <%= render 'comments/form', comment: Comment.new, post: @presenter.post %>
     </div>

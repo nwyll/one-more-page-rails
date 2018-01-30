@@ -34,14 +34,14 @@ RSpec.describe CommentsController, type: :controller do
         expect(comment_instance.body).to eq my_comment.body
       end
 
-       it "does not allow a member to edit a comment they don't own" do
-         sign_out(member)
-         other_member.confirm
-         sign_in(other_member)
+      it "does not allow a member to edit a comment they don't own" do
+        sign_out(member)
+        other_member.confirm
+        sign_in(other_member)
 
-         get :edit, params: { post_id: my_post.id, id: my_comment.id }
-         expect(response).to redirect_to(request.referrer || root_path)
-       end
+        get :edit, params: { post_id: my_post.id, id: my_comment.id }
+        expect(response).to redirect_to(request.referrer || root_path)
+      end
     end
 
     describe "POST #create" do
@@ -111,7 +111,7 @@ RSpec.describe CommentsController, type: :controller do
   end
 
   context "admin" do
-    before do
+    before(:each) do
       admin.confirm
       sign_in(admin)
     end

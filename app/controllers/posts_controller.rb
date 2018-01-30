@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!
-  
+
   # GET topics/1/posts/1
   # GET topics/1/posts/1.json
   def show
@@ -19,6 +19,7 @@ class PostsController < ApplicationController
   def edit
     topic = Topic.find(params[:topic_id])
     @post = topic.posts.find(params[:id])
+    authorize @post
   end
 
   # POST topics/1/posts
@@ -26,6 +27,7 @@ class PostsController < ApplicationController
   def create
     topic = Topic.find(params[:topic_id])
     @post = topic.posts.build(post_params)
+    @post.user = current_user
 
     respond_to do |format|
       if @post.save
@@ -43,6 +45,7 @@ class PostsController < ApplicationController
   def update
     topic = Topic.find(params[:topic_id])
     @post = topic.posts.find(params[:id])
+    authorize @post
 
     respond_to do |format|
       if @post.update(post_params)
@@ -60,6 +63,7 @@ class PostsController < ApplicationController
   def destroy
     topic = Topic.find(params[:topic_id])
     @post = topic.posts.find(params[:id])
+    authorize @post
 
     @post.destroy
     respond_to do |format|
