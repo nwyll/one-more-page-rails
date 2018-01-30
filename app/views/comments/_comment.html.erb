@@ -1,6 +1,8 @@
-<div>
-  <p><%= comment.body %></p>
 
+<div class="col-sm-10">
+  <p><%= comment.body %></p>
+</div>
+<div class="col-sm-2"
   <% if policy(comment).update? %>
     <small>
       <%= link_to 'Edit', edit_post_comment_path(@presenter.post, comment) %> |

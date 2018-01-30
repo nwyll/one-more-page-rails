@@ -10,7 +10,7 @@ RSpec.describe CommentsController, type: :controller do
   let(:my_comment) { create(:comment, post: my_post, user: member) }
 
   context "member" do
-    before do
+    before(:each) do
       member.confirm
       sign_in(member)
     end
@@ -48,7 +48,7 @@ RSpec.describe CommentsController, type: :controller do
       it "increases the number of comments by 1" do
         expect{
           post :create, params: { post_id: my_post.id, comment: { body: Faker::Lorem.paragraph } }
-        }.to change(Comment, :count).by(1)
+        }.to change(Comment,:count).by(1)
       end
 
       it "redirects to the post show view" do
@@ -140,7 +140,7 @@ RSpec.describe CommentsController, type: :controller do
       it "increases the number of comments by 1" do
         expect{
           post :create, params: { post_id: my_post.id, comment: { body: Faker::Lorem.paragraph } }
-        }.to change(Comment, :count).by(1)
+        }.to change(Comment,:count).by(1)
       end
 
       it "redirects to the post show view" do

@@ -11,7 +11,8 @@ class CommentsController < ApplicationController
   # POST posts/1/comments
   # POST posts/1/comments.json
   def create
-    @comment = @post.comments.build(comment_params)
+    @comment = @post.comments.new(comment_params)
+    @comment.user = current_user
 
     respond_to do |format|
       if @comment.save
@@ -53,7 +54,6 @@ class CommentsController < ApplicationController
   end
 
   private
-  # Use callbacks to share common setup or constraints between actions.
     def set_post
       @post = Post.find(params[:post_id])
     end
@@ -62,7 +62,6 @@ class CommentsController < ApplicationController
       @comment = @post.comments.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def comment_params
      params.require(:comment).permit(:body)
    end
