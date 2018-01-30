@@ -1,13 +1,13 @@
 class PostPolicy < ApplicationPolicy
   def update?
-    user_who_can_access_comment
+    user_who_can_access_post
   end
 
   def destroy?
-    user_who_can_access_comment
+    user_who_can_access_post
   end
 
-  def user_who_can_access_comment
+  def user_who_can_access_post
     record.user_id == user.id || user.admin?
   end
 end
