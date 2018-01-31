@@ -1,6 +1,6 @@
 <div class="container">
   <!-- Book Club Info small -->
-  <div class="row">
+  <div class="row" style="padding-bottom: 20px">
     <div class="col-sm-4">
       <%= image_tag @book_club.cover.url(:medium), :height => "225px" %>
     </div>
@@ -20,7 +20,9 @@
           <tr class="topic-item">
             <td class="topic-item-name">
               <h2><%= @topic.name %></h2>
-              <%= link_to 'New Post', new_topic_post_path(@topic), class: "btn btn-primary" %>
+              <% if current_user %>
+                <%= link_to 'New Post', new_topic_post_path(@topic), class: "btn btn-primary" %>
+              <% end %>
             </td>
             <td class="topic-item-actions">
               <% if policy(@topic).update? %>

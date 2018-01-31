@@ -1,4 +1,8 @@
 class TopicPolicy < ApplicationPolicy
+  def show?
+
+  end
+
   def update?
     user_who_can_access_topic
   end
@@ -8,6 +12,8 @@ class TopicPolicy < ApplicationPolicy
   end
 
   def user_who_can_access_topic
-    record.user_id == user.id || user.admin?
+    if user
+      record.user_id == user.id || user.admin?
+    end
   end
 end
