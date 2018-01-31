@@ -3,7 +3,7 @@ FactoryBot.define do
     title Faker::Lorem.sentence
     author Faker::Name.name
     description Faker::Lorem.paragraph
-    start_date "2018-01-01"
-    end_date "2018-01-31"
+    start_date Date.today.beginning_of_month
+    end_date Date.today.end_of_month
   end
 end

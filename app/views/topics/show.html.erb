@@ -10,33 +10,46 @@
       <h2><%= @book_club.title %></h2>
       <p><em>By: <%= @book_club.author %></em></p>
       <p>Discussion Closes: <%= @book_club.end_date.strftime("%B %-d, %Y") %></p>
-      <br>
+      <%= link_to 'Back to Book Club', book_club_path(@book_club) %> <br><br>
     </div>
   </div>
 
-  <hr>
-
   <!-- Topic Name -->
   <div class="row">
-    <div class="col-sm-8">
-      <h2><%= @topic.name %></h2>
-    </div>
-    <div class="col-sm-4">
-      <%= link_to 'Back to Book Club', book_club_path(@book_club) %> <br>
+    <div class="col">
+      <table class="table">
+        <tbody>
+          <tr class="topic-item">
+            <td class="topic-item-name">
+              <h2><%= @topic.name %></h2>
+              <%= link_to 'New Post', new_topic_post_path(@topic), class: "btn btn-primary" %>
+            </td>
+            <td class="topic-item-actions">
+              <% if policy(@topic).update? %>
+                <%= link_to 'Edit Topic', edit_book_club_topic_path(@book_club, @topic) %> |
+                <%= link_to 'Delete Topic', [@book_club, @topic], method: :delete, data: { confirm: 'Are you sure?' } %>
+              <% end %>
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </div>
 
   <!-- Show Topic Posts -->
   <div class="row">
-    <div class="col-sm-8">
-      <% @topic.posts.each do |post| %>
-        <p>
-          <%= link_to post.body,  topic_post_path(@topic, post) %>
-        </p>
-      <% end %>
-    </div>
-    <div class="col-sm-4">
-      <%= link_to 'New Post', new_topic_post_path(@topic), class: "btn btn-primary" %>
+    <div class="col">
+      <table class="table">
+        <tbody>
+          <% @topic.posts.each do |post| %>
+            <tr class="post-item">
+              <td>
+                <p><%= link_to post.body,  topic_post_path(@topic, post) %></p>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
     </div>
   </div>
 

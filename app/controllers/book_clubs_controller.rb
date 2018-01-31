@@ -1,4 +1,5 @@
 class BookClubsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_book_club, only: [:show, :edit, :update, :destroy]
 
   # GET /book_clubs
@@ -19,16 +20,19 @@ class BookClubsController < ApplicationController
   # GET /book_clubs/new
   def new
     @book_club = BookClub.new
+    authorize @book_club
   end
 
   # GET /book_clubs/1/edit
   def edit
+    authorize @book_club
   end
 
   # POST /book_clubs
   # POST /book_clubs.json
   def create
     @book_club = BookClub.new(book_club_params)
+    authorize @book_club
 
     respond_to do |format|
       if @book_club.save
@@ -44,6 +48,8 @@ class BookClubsController < ApplicationController
   # PATCH/PUT /book_clubs/1
   # PATCH/PUT /book_clubs/1.json
   def update
+    authorize @book_club
+
     respond_to do |format|
       if @book_club.update(book_club_params)
         format.html { redirect_to @book_club, notice: 'Book club was successfully updated.' }
@@ -58,7 +64,9 @@ class BookClubsController < ApplicationController
   # DELETE /book_clubs/1
   # DELETE /book_clubs/1.json
   def destroy
+    authorize @book_club
     @book_club.destroy
+    
     respond_to do |format|
       format.html { redirect_to book_clubs_url, notice: 'Book club was successfully destroyed.' }
       format.json { head :no_content }
