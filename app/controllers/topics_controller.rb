@@ -2,23 +2,23 @@ class TopicsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_book_club
   before_action :set_topic, only: [:show, :edit, :update, :destroy]
+  skip_before_action :authenticate_user!, if: :current_book_club?, only: :show, raise: false
 
-  # GET /topics/1
-  # GET /topics/1.json
+  # GET book_clubs/1/topics/1
   def show
   end
 
-  # GET /topics/new
+  # GET book_clubs/1/topics/new
   def new
     @topic = @book_club.topics.build
   end
 
-  # GET /topics/1/edit
+  # GET book_clubs/1/topics/1/edit
   def edit
     authorize @topic
   end
 
-  # POST /topics
+  # POST book_clubs/1/topics
   # POST /topics.json
   def create
     @topic = @book_club.topics.build(topic_params)
@@ -35,7 +35,7 @@ class TopicsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /topics/1
+  # PATCH/PUT book_clubs/1/topics/1
   # PATCH/PUT /topics/1.json
   def update
     authorize @topic
@@ -51,7 +51,7 @@ class TopicsController < ApplicationController
     end
   end
 
-  # DELETE /topics/1
+  # DELETE book_clubs/1/topics/1
   # DELETE /topics/1.json
   def destroy
     authorize @topic
@@ -64,7 +64,6 @@ class TopicsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_book_club
       @book_club = BookClub.find(params[:book_club_id])
     end
@@ -73,8 +72,11 @@ class TopicsController < ApplicationController
       @topic = @book_club.topics.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def topic_params
       params.require(:topic).permit(:name, :topic_type)
+    end
+
+    def current_book_club?
+      @book_club.current?
     end
 end
