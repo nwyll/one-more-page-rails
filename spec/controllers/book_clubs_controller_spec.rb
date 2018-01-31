@@ -68,7 +68,7 @@ RSpec.describe BookClubsController, type: :controller do
 
     describe "POST #create" do
       it "does not allow members to create book_clubs, returns redirect" do
-        post :create, params: { book_club: my_book_club }
+        post :create, params: { book_club: { title: Faker::Lorem.sentence, author: Faker::Name.name, description: Faker::Lorem.paragraph, start_date: Date.today.beginning_of_month, end_date: Date.today.end_of_month } }
         expect(response).to redirect_to(request.referrer || root_path)
       end
     end
@@ -78,11 +78,10 @@ RSpec.describe BookClubsController, type: :controller do
         new_title = Faker::Lorem.sentence
         new_author = Faker::Name.name
         new_description = Faker::Lorem.paragraph
-        new_start_date = DateTime.now
-        new_end_date = DateTime.now
-        new_cover = File.open(File.join(Rails.root,'app/assets/images/cover_art/generic_cover_2.jpg'))
+        new_start_date = Date.today
+        new_end_date = Date.today
 
-        put :update, params: { id: my_book_club.id, book_club: { title: new_title, author: new_author, description: new_description, start_date: new_start_date, end_date: new_end_date, cover: new_cover } }
+        put :update, params: { id: my_book_club.id, book_club: { title: new_title, author: new_author, description: new_description, start_date: new_start_date, end_date: new_end_date } }
 
         expect(response).to redirect_to(request.referrer || root_path)
       end
@@ -163,17 +162,17 @@ RSpec.describe BookClubsController, type: :controller do
     describe "POST #create" do
       it "increases the number of BookClubs by 1" do
         expect {
-          post :create, params: { book_club: my_book_club }
+          post :create, params: { book_club: { title: Faker::Lorem.sentence, author: Faker::Name.name, description: Faker::Lorem.paragraph, start_date: Date.today.beginning_of_month, end_date: Date.today.end_of_month } }
         }.to change(BookClub,:count).by(1)
       end
 
       it "assigns the new book_club to BookClub.last" do
-          post :create, params: { book_club: my_book_club }
+          post :create, params: { book_club: { title: Faker::Lorem.sentence, author: Faker::Name.name, description: Faker::Lorem.paragraph, start_date: Date.today.beginning_of_month, end_date: Date.today.end_of_month } }
           expect(assigns(:book_club)).to eq BookClub.last
         end
 
       it "redirects to the created book_club" do
-        post :create, params: { book_club: my_book_club }
+        post :create, params: { book_club: { title: Faker::Lorem.sentence, author: Faker::Name.name, description: Faker::Lorem.paragraph, start_date: Date.today.beginning_of_month, end_date: Date.today.end_of_month } }
         expect(response).to redirect_to(BookClub.last)
       end
     end
@@ -183,11 +182,10 @@ RSpec.describe BookClubsController, type: :controller do
         new_title = Faker::Lorem.sentence
         new_author = Faker::Name.name
         new_description = Faker::Lorem.paragraph
-        new_start_date = DateTime.now
-        new_end_date = DateTime.now
-        new_cover = File.open(File.join(Rails.root,'app/assets/images/cover_art/generic_cover_2.jpg'))
+        new_start_date = Date.today
+        new_end_date = Date.today
 
-        put :update, params: { id: my_book_club.id, book_club: { title: new_title, author: new_author, description: new_description, start_date: new_start_date, end_date: new_end_date, cover: new_cover } }
+        put :update, params: { id: my_book_club.id, book_club: { title: new_title, author: new_author, description: new_description, start_date: new_start_date, end_date: new_end_date } }
 
         updated_book_club = assigns(:book_club)
         expect(updated_book_club.id).to eq my_book_club.id
@@ -196,18 +194,16 @@ RSpec.describe BookClubsController, type: :controller do
         expect(updated_book_club.description).to eq new_description
         expect(updated_book_club.start_date).to eq new_start_date
         expect(updated_book_club.end_date).to eq new_end_date
-        expect(updated_book_club.cover).to eq new_cover
       end
 
       it "redirects to the updated book_club" do
         new_title = Faker::Lorem.sentence
         new_author = Faker::Name.name
         new_description = Faker::Lorem.paragraph
-        new_start_date = DateTime.now
-        new_end_date = DateTime.now
-        new_cover = File.open(File.join(Rails.root,'app/assets/images/cover_art/generic_cover_2.jpg'))
+        new_start_date = Date.today
+        new_end_date = Date.today
 
-        put :update, params: { id: my_book_club.id, book_club: { title: new_title, author: new_author, description: new_description, start_date: new_start_date, end_date: new_end_date, cover: new_cover } }
+        put :update, params: { id: my_book_club.id, book_club: { title: new_title, author: new_author, description: new_description, start_date: new_start_date, end_date: new_end_date } }
 
         expect(response).to redirect_to my_book_club
       end
