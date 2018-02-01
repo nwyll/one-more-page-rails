@@ -1,7 +1,11 @@
 class BookClubsController < ApplicationController
   before_action :set_book_club, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!
-  skip_before_action :authenticate_user!, if: :current_book_club?, only: :show, raise: false
+
+  # before_action :authenticate_user!
+  # skip_before_action :authenticate_user!, if: :current_book_club?, only: :show, raise: false
+  # skip_before_action :authenticate_user!, only: :show, if: :current_book_club?
+  skip_before_action :authenticate_user!, only: :show, raise: false
+  before_action :authenticate_user!, unless: :current_book_club?
 
   # GET /book_clubs
   # GET /book_clubs.json
@@ -84,6 +88,10 @@ class BookClubsController < ApplicationController
     end
 
     def current_book_club?
-      @book_club.current?
+      current_book_clubs = BookClub.where(':date BETWEEN start_date AND end_date', date: Date.today)
+      current_book_clubs.exists?(id: params[:id])
+
+      # @book_club = BookClub.find(params[:id])
+      # @book_club.current?(@bookclub.id)
     end
 end
