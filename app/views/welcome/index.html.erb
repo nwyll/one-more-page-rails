@@ -15,7 +15,7 @@
   <h2>Check out our current book clubs.</h2>
   <div class="row justify-content-center">
     <% @current_book_clubs.each do |book_club| %>
-      <div class="col-4">
+      <div class="col">
         <%= link_to book_club_path(book_club) do %>
           <%= image_tag(book_club.cover.url(:medium), size: "150x225", alt: book_club.title) %>
         <% end %>

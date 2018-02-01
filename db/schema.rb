@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180130204325) do
+ActiveRecord::Schema.define(version: 20180201180545) do
 
   create_table "book_clubs", force: :cascade do |t|
     t.string "title"
@@ -49,6 +49,15 @@ ActiveRecord::Schema.define(version: 20180130204325) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.index ["priority", "run_at"], name: "delayed_jobs_priority"
+  end
+
+  create_table "memberships", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "book_club_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["book_club_id"], name: "index_memberships_on_book_club_id"
+    t.index ["user_id"], name: "index_memberships_on_user_id"
   end
 
   create_table "posts", force: :cascade do |t|
