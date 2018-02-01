@@ -1,0 +1,20 @@
+<div class="container">
+  <div align="right">
+    <%= link_to 'Create New Book Club', new_book_club_path, class: "btn btn-primary" %>
+  </div>
+
+  <div class="current-clubs">
+    <h3>Current Book Clubs</h3>
+    <%= render partial: "table", locals: { book_clubs: current } %>
+  </div>
+
+  <div class="upcoming-clubs">
+    <h3>Upcoming Book Clubs</h3>
+    <%= render partial: "table", locals: { book_clubs: upcoming } %>
+  </div>
+
+  <div class="past-clubs">
+    <h3>Past Book Clubs</h3>
+    <%= render partial: "table", locals: { book_clubs: past } %>
+  </div>
+</div> <!-- end of container -->

@@ -1,0 +1,61 @@
+<div class="container">
+  <!-- Current book club tiles -->
+  <div class="row">
+    <div class="col">
+      <h3>Current Book Clubs</h3>
+    </div>
+  </div>
+  <div class="row justify-content-center member-index-catagory-container">
+    <div class="card-deck">
+      <% current.each do |book_club| %>
+        <div class="card text-center" style="width:200px">
+          <div class="card-block">
+            <p></p>
+            <%= image_tag(book_club.cover.url(:medium), size: "150x227", alt: book_club.title) %>
+            <h6 class="card-title"><%= link_to book_club.title, book_club %></h6>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <!-- Upcoming book club tiles -->
+  <div class="row">
+    <div class="col">
+      <h3>Coming Next Month</h3>
+    </div>
+  </div>
+  <div class="row justify-content-center member-index-catagory-container">
+    <div class="card-deck">
+      <% upcoming.each do |book_club| %>
+        <div class="card text-center" style="width:200px">
+          <div class="card-block">
+            <p></p>
+            <%= image_tag(book_club.cover.url(:medium), size: "150x227", alt: book_club.title) %>
+            <h6 class="card-title"><%= link_to book_club.title, book_club_path(book_club) %></h6>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <!-- Past book club tiles -->
+  <div class="row">
+    <div class="col">
+      <h3>Past Book Clubs</h3>
+    </div>
+  </div>
+  <div class="row justify-content-center member-index-catagory-container">
+    <div class="card-deck">
+      <% past.each do |book_club| %>
+        <div class="card text-center" style="width:200px">
+          <div class="card-block">
+            <p></p>
+            <%= image_tag(book_club.cover.url(:medium), size: "150x227", alt: book_club.title) %>
+            <h6 class="card-title"><%= link_to book_club.title, book_club_path(book_club) %></h6>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div> <!-- end of container -->

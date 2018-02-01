@@ -1,8 +1,4 @@
 class TopicPolicy < ApplicationPolicy
-  def show?
-
-  end
-
   def update?
     user_who_can_access_topic
   end
