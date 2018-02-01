@@ -1,7 +1,9 @@
 class TopicsController < ApplicationController
-  before_action :authenticate_user!
   before_action :set_book_club
   before_action :set_topic, only: [:show, :edit, :update, :destroy]
+  
+  skip_before_action :authenticate_user!, only: :show, raise: false
+  before_action :authenticate_user!, unless: :current_book_club?
 
   # GET /topics/1
   # GET /topics/1.json
@@ -77,4 +79,12 @@ class TopicsController < ApplicationController
     def topic_params
       params.require(:topic).permit(:name, :topic_type)
     end
+<<<<<<< Updated upstream
+=======
+
+    def current_book_club?
+      current_book_clubs = BookClub.where(':date BETWEEN start_date AND end_date', date: Date.today)
+      current_book_clubs.exists?(id: params[:id])
+    end
+>>>>>>> Stashed changes
 end

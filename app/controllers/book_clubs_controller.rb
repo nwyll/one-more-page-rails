@@ -1,6 +1,10 @@
 class BookClubsController < ApplicationController
-  before_action :authenticate_user!
   before_action :set_book_club, only: [:show, :edit, :update, :destroy]
+  # before_action :authenticate_user!
+  # skip_before_action :authenticate_user!, if: :current_book_club?, only: :show, raise: false
+  # skip_before_action :authenticate_user!, only: :show, if: :current_book_club?
+  skip_before_action :authenticate_user!, only: :show, raise: false
+  before_action :authenticate_user!, unless: :current_book_club?
 
   # GET /book_clubs
   # GET /book_clubs.json
@@ -66,7 +70,7 @@ class BookClubsController < ApplicationController
   def destroy
     authorize @book_club
     @book_club.destroy
-    
+
     respond_to do |format|
       format.html { redirect_to book_clubs_url, notice: 'Book club was successfully destroyed.' }
       format.json { head :no_content }
@@ -83,4 +87,15 @@ class BookClubsController < ApplicationController
     def book_club_params
       params.require(:book_club).permit(:title, :author, :description, :start_date, :end_date, :cover)
     end
+<<<<<<< Updated upstream
+=======
+
+    def current_book_club?
+      current_book_clubs = BookClub.where(':date BETWEEN start_date AND end_date', date: Date.today)
+      current_book_clubs.exists?(id: params[:id])
+
+      # @book_club = BookClub.find(params[:id])
+      # @book_club.current?(@bookclub.id)
+    end
+>>>>>>> Stashed changes
 end
