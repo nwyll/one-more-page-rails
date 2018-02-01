@@ -1,5 +1,6 @@
 class BookClubsController < ApplicationController
   before_action :set_book_club, only: [:show, :edit, :update, :destroy]
+
   # before_action :authenticate_user!
   # skip_before_action :authenticate_user!, if: :current_book_club?, only: :show, raise: false
   # skip_before_action :authenticate_user!, only: :show, if: :current_book_club?
@@ -78,17 +79,13 @@ class BookClubsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_book_club
       @book_club = BookClub.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def book_club_params
       params.require(:book_club).permit(:title, :author, :description, :start_date, :end_date, :cover)
     end
-<<<<<<< Updated upstream
-=======
 
     def current_book_club?
       current_book_clubs = BookClub.where(':date BETWEEN start_date AND end_date', date: Date.today)
@@ -97,5 +94,4 @@ class BookClubsController < ApplicationController
       # @book_club = BookClub.find(params[:id])
       # @book_club.current?(@bookclub.id)
     end
->>>>>>> Stashed changes
 end

@@ -16,3 +16,5 @@ class BookClub < ApplicationRecord
   #   current_book_clubs.exists?(id: book_club_id)
   # end
 end
+
+
