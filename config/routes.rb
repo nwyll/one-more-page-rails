@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
   devise_for :users
-  
+
   resources :book_clubs do
     resources :topics, except: :index
+    resources :memberships, only: [:create, :destroy]
   end
 
   resources :topics, only: [] do
@@ -13,5 +14,6 @@ Rails.application.routes.draw do
     resources :comments, only: [:create, :edit, :update, :destroy]
   end
 
+  get 'dashboard' => 'dashboard#index'
   root 'welcome#index'
 end

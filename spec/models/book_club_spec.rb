@@ -4,6 +4,7 @@ RSpec.describe BookClub, type: :model do
   let(:book_club) { create(:book_club) }
 
   it { is_expected.to have_many(:topics) }
+  it { is_expected.to have_many(:memberships) }
 
   it { is_expected.to validate_presence_of(:title) }
   it { is_expected.to validate_presence_of(:author) }
