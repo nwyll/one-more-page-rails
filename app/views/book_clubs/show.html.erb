@@ -7,7 +7,7 @@
     <div class="col-md-8">
       <div class="title">
         <h2><%= @book_club.title %></h2>
-        <% if current_user %>
+        <% if policy(@book_club).join? %>
          <%= render partial: 'memberships/join', locals: { book_club: @book_club } %>
         <% end %>
       </div>
@@ -35,7 +35,7 @@
       <p>Warning: Spoilers may be present here!</p>
     </div>
     <div class="col-sm-2">
-      <% if current_user %>
+      <% if policy(@book_club).create_topic? %>
         <%= link_to 'Add New Topic', new_book_club_topic_path(@book_club), class: "btn btn-primary" %>
       <% end %>
     </div>

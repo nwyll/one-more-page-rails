@@ -5,7 +5,7 @@
       <p>Member Since: <%= current_user.created_at.strftime("%Y") %></p>
     </div>
     <div class="col-9">
-      <h2>My Current Book Clubs</h2>
+      <h2>Currently Following</h2>
       <% @my_current_book_clubs.each do |book_club| %>
         <%= link_to book_club_path(book_club) do %>
           <%= image_tag book_club.cover.url(:medium), size: "150x225" %>

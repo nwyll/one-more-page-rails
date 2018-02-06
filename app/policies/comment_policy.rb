@@ -8,6 +8,12 @@ class CommentPolicy < ApplicationPolicy
   end
 
   def user_who_can_access_comment
-    record.user_id == user.id || user.admin?
+    if user
+     (record.user_id == user.id && when_user_can_access_comment) || user.admin?
+   end
+  end
+
+  def when_user_can_access_comment
+    record.post.topic.book_club.current?
   end
 end

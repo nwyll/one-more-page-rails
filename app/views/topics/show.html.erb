@@ -20,7 +20,7 @@
           <tr class="topic-item">
             <td class="topic-item-name">
               <h2><%= @topic.name %></h2>
-              <% if current_user %>
+              <% if policy(@topic).create_post? %>
                 <%= link_to 'New Post', new_topic_post_path(@topic), class: "btn btn-primary" %>
               <% end %>
             </td>
