@@ -1,0 +1,12 @@
+<div class="col-lg-2 col-md-3 col-sm-4 book-list">
+  <div class="cover">
+    <%= link_to book_club_path(book_club) do %>
+      <%= image_tag(book_club.cover.url(:medium), size: "150x227", alt: book_club.title) %>
+    <% end %>
+  </div>
+  <h4 class="title"><%= book_club.title %></h4>
+  <div class="by">
+    <em>by: </em>
+    <span><%= book_club.author %></span>
+  </div>
+</div>

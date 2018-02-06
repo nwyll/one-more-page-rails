@@ -6,22 +6,9 @@
     </div>
   </div>
   <div class="row member-index-catagory-container">
-    <div class="col">
-      <ul class="book-list">
-        <% current.each do |book_club| %>
-          <li>
-            <div class="cover">
-              <%= image_tag(book_club.cover.url(:medium), size: "150x227", alt: book_club.title) %>
-            </div>
-            <h4 class="title"><%= link_to book_club.title, book_club %></h4>
-            <div class="by">
-              <em>by: </em>
-              <p><%= book_club.author %>
-            </div>
-          </li>
-        <% end %>
-      </ul>
-    </div>
+    <% current.each do |book_club| %>
+      <%= render partial: "book_tile", locals: { book_club: book_club } %>
+    <% end %>
   </div>
 
   <!-- Upcoming book club tiles -->
@@ -31,22 +18,9 @@
     </div>
   </div>
   <div class="row member-index-catagory-container">
-    <div class="col">
-      <ul class="book-list">
-        <% upcoming.each do |book_club| %>
-          <li>
-            <div class="cover">
-              <%= image_tag(book_club.cover.url(:medium), size: "150x227", alt: book_club.title) %>
-            </div>
-            <h4 class="title"><%= link_to book_club.title, book_club %></h4>
-            <div class="by">
-              <em>by: </em>
-              <p><%= book_club.author %>
-            </div>
-          </li>
-        <% end %>
-      </ul>
-    </div>
+    <% upcoming.each do |book_club| %>
+      <%= render partial: "book_tile", locals: { book_club: book_club } %>
+    <% end %>
   </div>
 
   <!-- Past book club tiles -->
@@ -55,22 +29,10 @@
       <h3>Past Book Clubs</h3>
     </div>
   </div>
-  <div class="row justify-content-center member-index-catagory-container">
-    <div class="col">
-      <ul class="book-list">
-        <% past.each do |book_club| %>
-          <li>
-            <div class="cover">
-              <%= image_tag(book_club.cover.url(:medium), size: "150x227", alt: book_club.title) %>
-            </div>
-            <h4 class="title"><%= link_to book_club.title, book_club %></h4>
-            <div class="by">
-              <em>by: </em>
-              <p><%= book_club.author %>
-            </div>
-          </li>
-        <% end %>
-      </ul>
-    </div>
+  <div class="row member-index-catagory-container">
+    <% past.each do |book_club| %>
+      <%= render partial: "book_tile", locals: { book_club: book_club } %>
+    <% end %>
   </div>
+  
 </div> <!-- end of container -->
