@@ -15,4 +15,14 @@ class BookClub < ApplicationRecord
   def current?
     (start_date..end_date).cover?(Date.today)
   end
+
+  # Return whether a giveb book_club is an upcoming_club
+  def upcoming?
+    (start_date > Date.today)
+  end
+
+  # Return whether a giveb book_club is a past_club
+  def past?
+    (end_date < Date.today)
+  end
 end

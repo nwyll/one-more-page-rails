@@ -8,6 +8,12 @@ class PostPolicy < ApplicationPolicy
   end
 
   def user_who_can_access_post
-    record.user_id == user.id || user.admin?
+    if user
+      (record.user_id == user.id && when_user_can_access_post) || user.admin?
+    end
+  end
+
+  def when_user_can_access_post
+    record.topic.book_club.current?
   end
 end
