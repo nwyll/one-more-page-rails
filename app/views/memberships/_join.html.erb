@@ -1,0 +1,5 @@
+<% if current_user.member_of(book_club) %>
+  <%= link_to "Unfollow this book club", [book_club, current_user.memberships.where(book_club_id: book_club.id).first], method: :delete, class: "btn btn-danger" %>
+<% else %>
+  <%= link_to "Join Book Club", [book_club, Membership.new], method: :post, class: "btn btn-primary" %>
+<% end %>

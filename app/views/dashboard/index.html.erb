@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="row">
+    <div class="col-3">
+      <h4><%= current_user.name %></h4>
+      <p>Member Since: <%= current_user.created_at.strftime("%Y") %></p>
+    </div>
+    <div class="col-9">
+      <h2>My Current Book Clubs</h2>
+      <% @my_current_book_clubs.each do |book_club| %>
+        <%= link_to book_club_path(book_club) do %>
+          <%= image_tag book_club.cover.url(:medium), size: "150x225" %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+
+  <hr>
+
+  <div class="row">
+    <div class="col">
+      <h2>My Past Book Clubs</h2>
+      <% @my_past_book_clubs.each do |book_club| %>
+        <%= link_to book_club_path(book_club) do %>
+          <%= image_tag book_club.cover.url(:medium), size: "75x125" %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>
