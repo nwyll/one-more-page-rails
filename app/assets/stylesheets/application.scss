@@ -28,3 +28,11 @@
 .alert-notice {
   @extend .alert-info;
 }
+
+.pagination {
+  float: right;
+}
+
+.pagination * {
+  margin: 2px;
+}

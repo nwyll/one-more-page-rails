@@ -8,7 +8,7 @@ class BookClubsController < ApplicationController
   def index
     @current = BookClub.where(':date BETWEEN start_date AND end_date', date: Date.today)
     @upcoming = BookClub.where(':date < start_date', date: Date.today)
-    @past = BookClub.where(':date > end_date', date: Date.today)
+    @past = BookClub.where(':date > end_date', date: Date.today).order(end_date: :desc).limit(50).paginate(page: params[:page], per_page: 6)
   end
 
   # GET /book_clubs/1

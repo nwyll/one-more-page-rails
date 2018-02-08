@@ -3,11 +3,14 @@
   <div class="row">
     <div class="col">
       <h3>This Month's Book Clubs</h3>
-    
-  <div class="row member-index-catagory-container">
-    <% current.each do |book_club| %>
-      <%= render partial: "book_tile", locals: { book_club: book_club } %>
-    <% end %>
+    </div>
+  </div>
+  <div class="member-index-catagory-container">
+    <div class="row">
+      <% current.each do |book_club| %>
+        <%= render partial: "book_tile", locals: { book_club: book_club } %>
+      <% end %>
+    </div>
   </div>
 
   <!-- Upcoming book club tiles -->
@@ -16,10 +19,12 @@
       <h3>Coming Next Month</h3>
     </div>
   </div>
-  <div class="row member-index-catagory-container">
-    <% upcoming.each do |book_club| %>
-      <%= render partial: "book_tile", locals: { book_club: book_club } %>
-    <% end %>
+  <div class="member-index-catagory-container">
+    <div class="row">
+      <% upcoming.each do |book_club| %>
+        <%= render partial: "book_tile", locals: { book_club: book_club } %>
+      <% end %>
+    </div>
   </div>
 
   <!-- Past book club tiles -->
@@ -28,10 +33,15 @@
       <h3>Past Book Clubs</h3>
     </div>
   </div>
-  <div class="row member-index-catagory-container">
-    <% past.each do |book_club| %>
-      <%= render partial: "book_tile", locals: { book_club: book_club } %>
-    <% end %>
+  <div class="member-index-catagory-container">
+    <div class="row">
+      <% past.each do |book_club| %>
+        <%= render partial: "book_tile", locals: { book_club: book_club } %>
+      <% end %>
+    </div>
+    <div class="row justify-content-end">
+      <%= will_paginate past %>
+    </div>
   </div>
 
 </div> <!-- end of container -->

@@ -31,15 +31,21 @@
       <h2>My Past Book Clubs</h2>
     </div>
   </div>
-  <div class="row member-index-catagory-container">
-    <% @my_past_book_clubs.each do |book_club| %>
-      <div class="col-lg-2 col-md-2 col-sm-3 book-list-sm">
-        <div class="cover">
-          <%= link_to book_club_path(book_club) do %>
-            <%= image_tag book_club.cover.url(:medium), size: "100x150", alt: book_club.title %>
-          <% end %>
+  <div class='member-index-catagory-container'>
+    <div class="row">
+      <% @my_past_book_clubs.each do |book_club| %>
+        <div class="col-lg-1 col-md-2 col-sm-2 book-list-sm">
+          <div class="cover">
+            <%= link_to book_club_path(book_club) do %>
+              <%= image_tag book_club.cover.url(:medium), size: "65x98", alt: book_club.title %>
+            <% end %>
+          </div>
         </div>
-      </div>
-    <% end %>
+      <% end %>
+    </div>
+    <div class="row justify-content-end">
+      <%= will_paginate @my_past_book_clubs %>
+    </div>
   </div>
+
 </div>
