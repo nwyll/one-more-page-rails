@@ -31,7 +31,6 @@
 .book-list .cover {
   margin: 0 0 10px;
   height: 227px;
-  overflow: hidden;
 }
 
 .book-list .title {
@@ -47,10 +46,19 @@
   margin-bottom: 10px;
 }
 
-.title h2 {
+.title h2, h4 {
   display: inline-block;
 }
 
 .title a {
   float: right;
+}
+
+.book-club-info {
+  margin-top: 20px;
+}
+
+.book-club-info .cover {
+  margin-bottom: 20px;
+  overflow: hidden;
 }

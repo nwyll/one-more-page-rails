@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Post, type: :model do
-  let(:my_user) { create(:user) }
+  let(:my_user) { create(:user, email: Faker::Internet.email) }
   let(:my_book_club) { create(:book_club) }
   let(:my_topic) { create(:topic, book_club: my_book_club) }
   let(:my_post) { create(:post, topic: my_topic, user: my_user) }

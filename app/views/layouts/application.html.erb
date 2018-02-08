@@ -26,9 +26,7 @@
               <%= link_to "My Dashboard", dashboard_path, class: "nav-link" %>
             </li>
           </ul>
-        <% end %>
-        <ul class="navbar-nav pull-right">
-          <% if user_signed_in? %>
+          <ul class="navbar-nav pull-right">
             <li class="nav-item dropdown show">
               <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <%= current_user.name %>
@@ -43,26 +41,26 @@
                 </a>
               </div>
             </li>
-          <% else %>
+          </ul>
+        <% else %>
+          <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-              <%= link_to 'Log In', new_user_session_path %>
+              <%= link_to 'Log In', new_user_session_path, class: "nav-link" %>
             </li>
             <li class="nav-item">
-              <%= link_to 'Sign Up', new_user_registration_path %>
+              <%= link_to 'Sign Up', new_user_registration_path, class: "nav-link" %>
             </li>
-          <% end %>
-        </ul>
-
-        <!-- <form class="form-inline my-2 my-lg-0">
-          <input class="form-control mr-sm-2" type="text" placeholder="Email">
-          <input class="form-control mr-sm-2" type="text" placeholder="Password">
-        </form> -->
+          </ul>
+        <% end %>
       </div>
     </nav>
 
     <div class="container">
       <% flash.each do |key, value| %>
-        <div class="alert alert-<%= key %>">
+        <div class="alert alert-<%= key %> alert-dismissible fade show" role="alert">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
           <%= value %>
         </div>
       <% end %>
