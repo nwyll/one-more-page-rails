@@ -47,10 +47,19 @@
   margin-bottom: 10px;
 }
 
-.title h2 {
+.title h2, h4 {
   display: inline-block;
 }
 
 .title a {
   float: right;
+}
+
+.book-club-info {
+  margin-top: 20px;
+}
+
+.book-club-info .cover {
+  margin-bottom: 20px;
+  overflow: hidden;
 }
