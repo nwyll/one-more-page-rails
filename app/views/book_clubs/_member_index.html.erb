@@ -3,8 +3,7 @@
   <div class="row">
     <div class="col">
       <h3>This Month's Book Clubs</h3>
-    </div>
-  </div>
+    
   <div class="row member-index-catagory-container">
     <% current.each do |book_club| %>
       <%= render partial: "book_tile", locals: { book_club: book_club } %>
@@ -34,5 +33,5 @@
       <%= render partial: "book_tile", locals: { book_club: book_club } %>
     <% end %>
   </div>
-  
+
 </div> <!-- end of container -->

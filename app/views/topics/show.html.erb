@@ -1,10 +1,10 @@
 <div class="container">
   <!-- Book Club Info small -->
   <div class="row" style="padding-bottom: 20px">
-    <div class="col-sm-4">
+    <div class="col-sm-4 col-md-3 col-lg-2">
       <%= image_tag @book_club.cover.url(:medium), :height => "225px" %>
     </div>
-    <div class="col-sm-8">
+    <div class="col-sm-8 col-md-9 col-lg-10">
       <h2><%= @book_club.title %></h2>
       <p><em>By: <%= @book_club.author %></em></p>
       <p>Discussion Closes: <%= @book_club.end_date.strftime("%B %-d, %Y") %></p>
@@ -12,16 +12,18 @@
     </div>
   </div>
 
-  <!-- Topic Name -->
+  <!-- Topic Title -->
   <div class="row">
     <div class="col">
       <table class="table">
         <tbody>
           <tr class="topic-item">
-            <td class="topic-item-name">
+            <td class="topic-item-title">
               <h2><%= @topic.name %></h2>
               <% if policy(@topic).create_post? %>
-                <%= link_to 'New Post', new_topic_post_path(@topic), class: "btn btn-primary" %>
+                <div class="new-post">
+                  <%= link_to 'New Post', new_topic_post_path(@topic), class: "btn btn-primary" %>
+                </div>
               <% end %>
             </td>
             <td class="topic-item-actions">
@@ -37,22 +39,25 @@
   </div>
 
   <!-- Show Topic Posts -->
-  <div class="row">
-    <div class="col">
-      <table class="table">
-        <tbody>
-          <% @topic.posts.each do |post| %>
-            <tr class="post-item">
-              <td>
-                <p><%= link_to post.body,  topic_post_path(@topic, post) %></p>
-              </td>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
-    </div>
+  <div class="container">
+    <% @topic.posts.each do |post| %>
+      <div class="row">
+        <div class="col-10">
+          <div class="post-info">
+            <p class="user-name">
+              <%= post.user.name %>
+              <span class="created"><%= post.updated_at.strftime("%b %d, %G %l:%M %p") %></span>
+            </p>
+          </div>
+          <div class="post-item">
+            <p><%= link_to post.body,  topic_post_path(@topic, post) %></p>
+            <small class="comment-count"><%= pluralize(post.comments.count, 'Comment') %></small>
+          </div>
+        </div>
+      </div>
+    <% end %>
   </div>
 
   <hr>
 
-</div>
+</div> <!-- end of container -->

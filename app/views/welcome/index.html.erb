@@ -1,8 +1,16 @@
 <!-- Main jumbotron -->
 <div class="jumbotron">
+  <div class="background-img"></div>
   <div class="container">
     <h1>Just one more page ...</h1>
-    <p>One More Page is a book club application dedicated to young adult novels. Here you can connect with fellow YA devotees and discuss your favorite books.</p>
+    <p>
+      One More Page is a book club application dedicated to young adult novels.
+      Here you can connect with fellow YA devotees and meet new friends who share your reading interests.
+    </p>
+    <p>
+      Young adult books are for the young and the forever young-at-heart. We love YA books just as much as you…possibly even more. What can we say? We’re a little obsessed.
+      Browse through our current book clubs below to checkout the conversations. <em> To just on more page!</em>
+    </p>
     <p>New? Create a free account.</p>
     <p>
       <%= link_to "Sign Up", new_user_registration_path, class: 'btn btn-primary btn-lg' %>
@@ -11,14 +19,16 @@
 </div>
 
 <!-- Current BookClubs -->
-<div class="container">
+<div class="container current-books">
   <h2>Check out our current book clubs.</h2>
   <div class="row justify-content-center">
     <% @current_book_clubs.each do |book_club| %>
-      <div class="col">
-        <%= link_to book_club_path(book_club) do %>
-          <%= image_tag(book_club.cover.url(:medium), size: "150x225", alt: book_club.title) %>
-        <% end %>
+      <div class="col book-list">
+        <div class="cover">
+          <%= link_to book_club_path(book_club) do %>
+            <%= image_tag(book_club.cover.url(:medium), size: "150x225", alt: book_club.title) %>
+          <% end %>
+        </div>
       </div>
     <% end %>
   </div>
@@ -27,15 +37,19 @@
 <!-- Selling Points -->
 <div class="container">
   <div class="row">
-    <div class="col-md-6">
-      <h2>Discover your next favorite book.</h2>
-      <p>Choose from our carefully curated monthly book clubs to join and discuss with fellow YA book lovers.</p>
-      <%= image_tag("welcome/books_in_black&white.jpg", size: "300x300", :alt => "Books in black and white") %>
+    <div class="col-md-6 selling-point">
+      <h2 class="text-center">Discover your next favorite book.</h2>
+      <p class="text-center">Choose from our carefully curated monthly book clubs to join and discuss with fellow YA book lovers.</p>
+      <div class="row justify-content-center">
+        <%= image_tag("welcome/books_in_black&white.jpg", size: "300x300", :alt => "Books in black and white") %>
+      </div>
     </div>
-    <div class="col-md-6">
-      <h2>Create your own book club.</h2>
-      <p>Premium members can create private book clubs. You select the book and invite your friends to join in on the conversation.</p>
-      <%= image_tag("welcome/lady_midnight_on_shelf.jpg", size: "300x300", :alt => "Lady Midnight") %>
+    <div class="col-md-6 selling-point">
+      <h2 class="text-center">Discuss the book as you go.</h2>
+      <p class="text-center">Hate spoilers? So do we! Thats why we have a safe space to discuss the book as you read without living in fear of having everything revealed. </p>
+      <div class="row justify-content-center">
+        <%= image_tag("welcome/lady_midnight_on_shelf.jpg", size: "300x300", :alt => "Lady Midnight") %>
+      </div>
     </div>
   </div>
 </div>
