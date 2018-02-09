@@ -1,9 +1,10 @@
 # Admin user
 admin = User.create!(
-  name:       'Admin',
-  email:      'admin@test.com',
+  name:       'Natalie',
+  email:      'nataliewyll@yahoo.com',
   password:   'helloworld',
-  role:       'admin'
+  role:       'admin',
+  confirmed_at: Datetime.now
 )
 
 # Book Clubs
