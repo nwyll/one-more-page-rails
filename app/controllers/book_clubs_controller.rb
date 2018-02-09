@@ -76,7 +76,15 @@ class BookClubsController < ApplicationController
     end
 
     def current_book_club?
+<<<<<<< Updated upstream
       set_book_club
       @book_club.current?
+=======
+      current_book_clubs = BookClub.where(':date BETWEEN start_date AND end_date', date: Date.today)
+      current_book_clubs.exists?(id: params[:id])
+
+      # @book_club = BookClub.find(params[:id])
+      # @book_club.current?(@bookclub.id)
+>>>>>>> Stashed changes
     end
 end
