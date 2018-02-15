@@ -4,6 +4,8 @@
 
 One More Page is a social book club application that allows users to connect with fellow YA devotees. Members can follow current book clubs, create new topics and create new posts and comment on other members posts. Users can also view upcoming and past book clubs.
 
+## [Demo Site](https://onemorepage.herokuapp.com/)
+
 ## Project Objectives
 
 - As a user, I want to know the name and purpose of this site so that I can decide whether I want to join.
