@@ -63,7 +63,7 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'bootstrap', '~> 4.0.0.alpha6'
-gem 'paperclip', '~> 5.2', '>= 5.2.1'
+gem 'paperclip', :git=> 'https://github.com/thoughtbot/paperclip', :ref => '523bd46c768226893f23889079a7aa9c73b57d68'
 gem 'jquery-rails'
 gem 'jquery-turbolinks'
 gem 'devise'
@@ -71,4 +71,4 @@ gem 'pundit'
 gem 'will_paginate', '~> 3.1', '>= 3.1.6'
 gem 'sendgrid-ruby'
 gem 'figaro', '1.0'
-gem 'aws-sdk', '~> 2.3'
+gem 'aws-sdk', '< 2.0'

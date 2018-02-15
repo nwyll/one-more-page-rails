@@ -27,4 +27,4 @@ sendgrid.env
 /config/application.yml
 
 # Ignore AWS congifuration
-/config/aws.yml
+.env
