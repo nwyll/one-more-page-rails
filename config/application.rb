@@ -27,8 +27,5 @@ module OneMorePage
 
     # Don't generate system test files.
     config.generators.system_tests = nil
-
-    # Perform email sending in the background
-    # config.active_job.queue_adapter = :delayed_job
   end
 end
